@@ -98,8 +98,8 @@ Chức năng "View files" ở trong ứng dụng của nhóm là khi người d�
 
 Chức năng "File transfer" ở trong ứng dụng của nhóm là trên giao diện sử dụng các chức năng là sender và receiver (sender.ejs và receiver.ejs) để truyền tải file từ người gửi sang nhiều người nhận (có hỗ trợ đa luồng) bằng cách sử dụng server socket.io
 
-<img src="https://github.com/Dang12312/File-Sharing/blob/main/public/img/UI3.png" align="center" width=1200px/>
+<img src="https://github.com/Dang12312/File-Sharing/blob/main/public/img/UI13.png" align="center" width=1200px/>
 
-<img src="https://github.com/Dang12312/File-Sharing/blob/main/public/img/UI4.png" align="center" width=1200px/>
+<img src="https://github.com/Dang12312/File-Sharing/blob/main/public/img/UI14.png" align="center" width=1200px/>
 
-<img src="https://github.com/Dang12312/File-Sharing/blob/main/public/img/UI5.png" align="center" width=1200px/>
+<img src="https://github.com/Dang12312/File-Sharing/blob/main/public/img/UI15.png" align="center" width=1200px/>
