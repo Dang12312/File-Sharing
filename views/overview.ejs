@@ -1,0 +1,32 @@
+<%- include ("header") %>
+
+<div class="card-container">
+  <% files.forEach(file => { %>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= file.name %></h5>
+
+        <p>
+          <strong>Username:</strong>
+          <%= file.info.username %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= file.info.gmail %>
+        </p>
+
+        <p>
+          <strong>Size:</strong>
+          <%= `${file.length}mb` %>
+        </p>
+
+        <a href="#" class="btn btn-primary">Fetch</a>
+      </div>
+    </div>
+  </div>
+
+  <% }) %>
+</div>

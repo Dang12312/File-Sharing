@@ -1,0 +1,88 @@
+<%- include ("header") %>
+
+<div class="col-md-6 mx-auto mt-5 mb-5 w-25 text-center">
+  <form class="form">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="fname"
+        placeholder="filename"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Publish</button>
+    </div>
+  </form>
+</div>
+
+<div class="card-container">
+  <% files.forEach(file => { %>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= file.filename %></h5>
+
+        <p>
+          <strong>Username:</strong>
+          <%= user.name %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= user.email %>
+        </p>
+
+        <p>
+          <strong>Size:</strong>
+          <%= `${file.length}mb` %>
+        </p>
+
+        <a href="#" class="btn btn-primary">Fetch</a>
+      </div>
+    </div>
+  </div>
+
+  <% }) %>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+  const publishA = (fname) => {
+    const hideAlert = () => {
+      const el = document.querySelector('.alert')
+      if (el) el.parentElement.removeChild(el)
+    }
+    const showAlert = (type, msg) => {
+      hideAlert()
+      const markup = `<div class="alert alert--${type}">${msg}</div>`
+      document.querySelector('body').insertAdjacentHTML('afterbegin', markup)
+      window.setTimeout(hideAlert, 5000)
+    }
+    const pushlish = async (fname) => {
+      try {
+        const res = await axios({
+          method: 'PATCH',
+          url: `/publish/${fname}`,
+        })
+        console.log(res)
+        if (res.data.status === 'success') {
+          showAlert('success', 'Published successfully!')
+          window.setTimeout(() => {
+            location.assign('/myfiles')
+          }, 1500)
+        }
+      } catch (err) {
+        showAlert('error', err.res.data.message)
+      }
+    }
+    pushlish(fname)
+  }
+
+  document.querySelector('.form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const fname = document.getElementById('fname').value
+    publishA(fname)
+  })
+</script>
